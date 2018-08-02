@@ -1,5 +1,6 @@
 package com.maurofokker.poc.cloud;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -12,7 +13,9 @@ import java.util.List;
 @RestController
 public class SpringMicroservicesLibraryCatalogApplication {
 
-    private int size = Book.getBooks().size();
+    // to pull properties from config server
+    @Value("${catalog.size}")
+    private int size;
 
     @RequestMapping("/catalog")
     @CrossOrigin
